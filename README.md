@@ -1,54 +1,54 @@
 # ShadeC0der.Dots
 
-Mi configuración personal de entorno de desarrollo, basada en un fork de [**Gentleman.Dots**](https://github.com/Gentleman-Programming/Gentleman.Dots) de [Gentleman Programming](https://github.com/Gentleman-Programming). Todo el crédito de la base va para él y su comunidad — este fork solo adapta la configuración a mi gusto, principalmente en lo visual y en soporte de lenguajes.
+Mis dotfiles: la configuración real que uso a diario en Arch Linux con [HyDE](https://github.com/HyDE-Project/HyDE) (Hyprland). La config de Neovim nació como fork de [**Gentleman.Dots**](https://github.com/Gentleman-Programming/Gentleman.Dots) de [Gentleman Programming](https://github.com/Gentleman-Programming) — todo el crédito de esa base va para él y su comunidad.
 
-## ¿Qué incluye?
+## Estructura
 
-- **Neovim** (LazyVim) con LSP, autocompletado e integración con IA — el foco principal de este fork
-- **Shells**: Fish, Zsh, Nushell
-- **Multiplexores**: Tmux, Zellij
-- **Emuladores de terminal**: Alacritty, Kitty, Ghostty
-- **Prompt**: Starship
+| Carpeta | Qué es | Destino en el sistema |
+|---|---|---|
+| `nvim/` | Neovim (LazyVim) — base Gentleman.Dots + mis cambios | `~/.config/nvim` |
+| `zsh/` | `.zshrc` (oh-my-zsh + Powerlevel10k) y `.p10k.zsh` | `~/.zshrc`, `~/.p10k.zsh` |
+| `starship/` | Prompt Starship | `~/.config/starship/starship.toml` |
+| `kitty/` | Terminal Kitty (integrada con HyDE) | `~/.config/kitty/` |
 
-## Cambios respecto al original
+> Los archivos de kitty (`hyde.conf`, `theme.conf`) los regenera HyDE al cambiar de tema; aquí guardo mi snapshot.
+
+## Cambios de nvim respecto a Gentleman.Dots
 
 - Soporte completo de **Rust** (rustaceanvim + rust-analyzer con clippy, keymaps propios)
 - Extras de LazyVim activados: **Python** (pyright + ruff), Astro, Tailwind, TOML, formatting con black
+- Header del dashboard con lettering propio (figlet `delta_corps_priest_1`)
 - Auto-guardado al salir de insert mode
 - Keybindings de OpenCode remapeados bajo `<leader>ao*`
 - Inlay hints activados, twilight desactivado, UI prompts con Snacks
-- Ajustes visuales varios (en progreso)
 
 ## Uso
 
 ```bash
-git clone https://github.com/ShadeC0der/ShadeC0der.Dots ~/ShadeC0der.Dots
+git clone git@github.com:ShadeC0der/ShadeC0der.Dots.git ~/Proyectos/ShadeC0der.Dots
+cd ~/Proyectos/ShadeC0der.Dots
 
-# Respaldar la config actual y enlazar la de Neovim
+# Neovim
 mv ~/.config/nvim ~/.config/nvim.bak
-ln -s ~/ShadeC0der.Dots/GentlemanNvim/nvim ~/.config/nvim
+ln -s "$PWD/nvim" ~/.config/nvim
+
+# Zsh (requiere oh-my-zsh y powerlevel10k instalados)
+ln -sf "$PWD/zsh/.zshrc" ~/.zshrc
+ln -sf "$PWD/zsh/.p10k.zsh" ~/.p10k.zsh
+
+# Starship
+mkdir -p ~/.config/starship
+ln -sf "$PWD/starship/starship.toml" ~/.config/starship/starship.toml
 ```
-
-Para la instalación completa del entorno (shells, terminales, multiplexores) el instalador TUI del proyecto original sigue siendo la mejor opción: ver la [guía de instalación de Gentleman.Dots](https://github.com/Gentleman-Programming/Gentleman.Dots#quick-start).
-
-## Documentación útil (del proyecto original)
-
-- [Keymaps de Neovim](https://github.com/Gentleman-Programming/Gentleman.Dots/blob/main/docs/neovim-keymaps.md)
-- [Instalación manual](https://github.com/Gentleman-Programming/Gentleman.Dots/blob/main/docs/manual-installation.md)
-- [Referencia de herramientas](https://github.com/Gentleman-Programming/Gentleman.Dots/blob/main/docs/tools.md)
 
 ## Créditos
 
-Este proyecto es un fork de [Gentleman.Dots](https://github.com/Gentleman-Programming/Gentleman.Dots), creado por **Gentleman Programming**:
+- La configuración de Neovim está basada en [Gentleman.Dots](https://github.com/Gentleman-Programming/Gentleman.Dots) de **Gentleman Programming** ([YouTube](https://youtube.com/@GentlemanProgramming) · [Twitch](https://twitch.tv/GentlemanProgramming) · [Discord](https://discord.gg/gentleman-programming)). Gracias también a todos los [contribuidores del proyecto original](https://github.com/Gentleman-Programming/Gentleman.Dots/graphs/contributors):
 
-- **YouTube**: [@GentlemanProgramming](https://youtube.com/@GentlemanProgramming)
-- **Twitch**: [GentlemanProgramming](https://twitch.tv/GentlemanProgramming)
-- **Discord**: [Gentleman Programming Community](https://discord.gg/gentleman-programming)
+  [![Contributors](https://contrib.rocks/image?repo=Gentleman-Programming/Gentleman.Dots)](https://github.com/Gentleman-Programming/Gentleman.Dots/graphs/contributors)
 
-Gracias a todos los que han contribuido al proyecto original:
-
-[![Contributors](https://contrib.rocks/image?repo=Gentleman-Programming/Gentleman.Dots)](https://github.com/Gentleman-Programming/Gentleman.Dots/graphs/contributors)
+- El entorno de escritorio (Hyprland, waybar, temas de kitty) es de [HyDE](https://github.com/HyDE-Project/HyDE).
 
 ## Licencia
 
-MIT — igual que el proyecto original (ver [LICENSE](GentlemanNvim/nvim/LICENSE)).
+MIT — igual que el proyecto original (ver [LICENSE](nvim/LICENSE)).
