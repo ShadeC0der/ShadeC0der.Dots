@@ -37,6 +37,9 @@ if [[ -o interactive && -t 1 ]]; then
   fi
 fi
 
+# .NET global tools (roslyn-language-server, etc.)
+export PATH="$PATH:$HOME/.dotnet/tools"
+
 export BAT_THEME="Dracula"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --ansi"
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :200 {}'"
