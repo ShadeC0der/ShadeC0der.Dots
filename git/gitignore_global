@@ -1,0 +1,12 @@
+# Herramientas personales
+.claude/
+agent.md
+
+# Configuraciones de editor
+.markdownlint.json
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

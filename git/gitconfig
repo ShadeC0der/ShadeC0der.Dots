@@ -1,0 +1,5 @@
+[user]
+	name = ShadeC0der
+	email = shc0d3rmain@gmail.com
+[core]
+	excludesfile = /home/shadec0der/.gitignore_global
